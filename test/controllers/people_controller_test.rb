@@ -18,47 +18,47 @@ class PeopleControllerTest < ActionController::TestCase
 
   test "should create person" do
     assert_difference('Person.count') do
-      post :create, person: { date_of_birth: @person.date_of_birth, 
+      process :create, method: :post, params: { person: { date_of_birth: @person.date_of_birth,
                               email: 'email@email.com',
-                              first_name: @person.first_name, 
-                              height_feet: @person.height_feet, 
-                              height_inches: @person.height_inches, 
-                              last_name: @person.last_name, 
-                              phone: @person.phone, 
-                              ssn: '555-555-5555', 
-                              weight: @person.weight }
+                              first_name: @person.first_name,
+                              height_feet: @person.height_feet,
+                              height_inches: @person.height_inches,
+                              last_name: @person.last_name,
+                              phone: @person.phone,
+                              ssn: '555-555-5555',
+                              weight: @person.weight } }
     end
 
     assert_redirected_to person_path(assigns(:person))
   end
 
   test "should show person" do
-    get :show, id: @person
+    process :show, method: :get, params: { id: @person }
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @person
+    get :edit, params: { id: @person }
     assert_response :success
   end
 
   test "should update person" do
-    patch :update, id: @person, person: { date_of_birth: @person.date_of_birth, 
-                                          email: @person.email, 
-                                          first_name: @person.first_name, 
-                                          height_feet: @person.height_feet, 
-                                          height_inches: @person.height_inches, 
-                                          last_name: @person.last_name, 
-                                          phone: @person.phone, 
-                                          ssn: @person.ssn, 
-                                          weight: @person.weight }
+    process :update, mehod: :patch, params: { id: @person, person: { date_of_birth: @person.date_of_birth,
+                                          email: @person.email,
+                                          first_name: @person.first_name,
+                                          height_feet: @person.height_feet,
+                                          height_inches: @person.height_inches,
+                                          last_name: @person.last_name,
+                                          phone: @person.phone,
+                                          ssn: @person.ssn,
+                                          weight: @person.weight }}
 
     assert_redirected_to person_path(assigns(:person))
   end
 
   test "should destroy person" do
     assert_difference('Person.count', -1) do
-      delete :destroy, id: @person
+      process :destroy, method: :delete, params: { id: @person }
     end
 
     assert_redirected_to people_path
