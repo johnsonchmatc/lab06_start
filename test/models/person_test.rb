@@ -77,7 +77,7 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal @valid_person.valid?, false 
   end
 
-  test "height_feet can not be less than 1 inch" do
+  test "height_inches can not be less than 1 inch" do
     @valid_person.height_inches = 0
     assert_equal @valid_person.valid?, false
   end
